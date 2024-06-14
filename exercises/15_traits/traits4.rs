@@ -33,17 +33,17 @@ mod tests {
 
     #[test]
     fn compare_license_information() {
-        let some_software = SomeSoftware {};
-        let other_software = OtherSoftware {};
+        let some_software = Box::new(SomeSoftware {});
+        let other_software = Box::new(OtherSoftware {});
 
-        assert!(compare_license_types(Box::new(some_software), Box::new(other_software)));
+        assert!(compare_license_types(some_software, other_software));
     }
 
     #[test]
     fn compare_license_information_backwards() {
-        let some_software = SomeSoftware {};
-        let other_software = OtherSoftware {};
+        let some_software = Box::new(SomeSoftware {});
+        let other_software = Box::new(OtherSoftware {});
 
-        assert!(compare_license_types(Box::new(other_software), Box::new(some_software)));
+        assert!(compare_license_types(other_software, some_software));
     }
 }
